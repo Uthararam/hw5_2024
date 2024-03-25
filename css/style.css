@@ -1,0 +1,200 @@
+
+/* Imports the Poppins font from Google Fonts, with two font-weights: 400 for regular text and 700 for bold text. */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
+
+/* Defines a keyframe animation named 'logoGrow' that animates the width and opacity of an element (ideal for a logo or similar). */
+@keyframes logoGrow {
+    from {
+      width: 25px;
+      opacity: 0;
+    }
+    to {
+      width: 475px;
+      opacity: 1;
+    }
+  }
+  /* Applies the logoGrow animation to an element with the id 'logo', setting the animation to play forward one time for 5 seconds. */
+  #logo {
+    animation: logoGrow 5s forwards;
+  }
+
+/* Sets the font family for the body to Poppins, sets a background image, and specifies a background color. */
+body {
+  font-family: 'Poppins', serif;
+  background-image: url('../images/concrete_seamless.png');
+  background-color: #f1f1f1;  
+}
+
+/* Header styles including a bottom border, margins, padding, and sets the header to stack its children elements vertically when they wrap. */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #50C7C7;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+/* Styles for navigation links, stacking them vertically. */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styles for navigation link anchor elements in their default and visited states. */
+.nav_links a:link,
+.nav_links a:visited {
+    color: blue;
+}
+
+/* Header styles for a card component, including background and border colors and border-radius. */
+.card > header {
+    background: #288088;
+    border: 2px solid #45ADAD;
+    border-radius: 50px 50px 0 0; 
+}
+
+/* Ensures the heading inside the card header has a matching border-radius on top edges. */
+.card > header > h3 {
+    border-radius: 50px 50px 0 0;
+}
+
+/* Basic structure for a card component, defining its size and corner rounding. */
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 450px;
+    border-radius: 50px 50px 0 0;
+}
+
+/* Styling for a 'pricing' section, ensuring its child elements are centered and wrapped as needed. */
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styles for a gallery, organizing the images in a flexible row that wraps. */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* Styles for images within the gallery, specifying their borders, margins, and dimensions. */
+.gallery img {
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+    height: auto;
+  }
+
+/* Media query for screens wider than 900px, modifying layout and styling of header, navigation links, pricing section, and card components. */
+@media screen and (min-width: 900px) {
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; 
+        align-items: center; 
+        background: #FFF; 
+        position: sticky; 
+        top: 0; 
+        z-index: 999; 
+    }
+
+
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .pricing {
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+    }
+
+    .card {
+        flex: 0 0 275px;
+        margin: 10px; 
+    }
+
+    .card h4{
+        margin-top: auto;
+        white-space: nowrap;
+        text-align: left;
+    }
+  }
+
+/* Media query to disable animations if the user prefers reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    #logo {
+      width: 475px;
+      opacity: 1;
+      animation: none;
+    }
+  }
+/* Print media query, adjusts layout and styling for printing the webpage, removing background images, changing the font, and hiding certain elements. */
+  @media print {
+
+/* Overrides the font family for the body element when printing, ignores any background image, and sets the text color to black */
+    body {
+        font-family: Arial, Helvetica, sans-serif; 
+        background-image: none;
+        color: black; 
+    }
+/* Styles the header for printing by arranging its child elements using flexbox, ensuring they are spaced out and aligned properly; additionally, styles borders, margins, and padding */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 3px solid #50C7C7;
+        margin-bottom: 20px;
+        padding: 0 20px;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+/* Adjusts the .nav_links for printing to lay out horizontally, spacing them equally across the available width (80% of the viewport width) */
+    .nav_links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80vw;
+    }
+/* Styles the .pricing element for printing to display its children in a single row without wrapping, aligning them at the bottom (flex-end) */
+    .pricing {
+        display: flex; 
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+    }
+/* Sets the base width for .card elements when printing, gives a solid border, ensures they include borders in the layout calculations (box-sizing), and space below each card */
+    .card {
+        flex-basis: 215px; 
+        border: 2px solid #45ADDD; 
+        box-sizing: border-box; 
+        margin-bottom: 20px; 
+    }
+/* Hides the gallery and any elements with the ID #gallery or class .gallery when the page is printed */
+    #gallery, .gallery {
+        display: none;
+      }
+/* Adds an emoji (thumbs up) after the second list item within a <ul> inside of a .card element when printed */
+    .card ul li:nth-child(2)::after {
+        content: "\1F44D\0020"; 
+      }
+/* Forces a page break before the footer when printing, ensuring that the footer starts on a new page */
+    footer {
+        page-break-before: always; 
+      }
+}
+  
+
+
